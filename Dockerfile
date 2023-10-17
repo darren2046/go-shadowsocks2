@@ -17,6 +17,6 @@ RUN apk upgrade \
     && apk add tzdata \
     && rm -rf /var/cache/apk/*
 
-COPY --from=builder /go-shadowsocks2/go-shadowsocks2 /usr/bin/shadowsocks
+COPY --from=builder /go-shadowsocks2/go-shadowsocks2 /bin/go-shadowsocks2
 
 CMD ["shadowsocks"]
