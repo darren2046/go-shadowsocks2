@@ -148,6 +148,10 @@ func main() {
 		if flags.RedirTCP6 != "" {
 			go redir6Local(flags.RedirTCP6, addr, ciph.StreamConn)
 		}
+
+		if flags.HttpProxy != "" {
+			go httpLocal(flags.HttpProxy, addr, ciph.StreamConn)
+		}
 	}
 
 	if flags.Server != "" { // server mode
@@ -187,9 +191,6 @@ func main() {
 			go tcpRemote(addr, ciph.StreamConn)
 		}
 
-		if flags.HttpProxy != "" {
-			go httpLocal(flags.HttpProxy, addr, ciph.StreamConn)
-		}
 	}
 
 	sigCh := make(chan os.Signal, 1)
