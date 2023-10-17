@@ -5,11 +5,9 @@ ENV GOPROXY https://goproxy.cn
 
 RUN apk upgrade \
     && apk add git \
-    && go get github.com/shadowsocks/go-shadowsocks2
+    && go get github.com/darren2046/go-shadowsocks2
 
 FROM alpine:3.12 AS dist
-
-LABEL maintainer="mritd <mritd@linux.com>"
 
 RUN apk upgrade \
     && apk add tzdata \
@@ -17,4 +15,4 @@ RUN apk upgrade \
 
 COPY --from=builder /go/bin/go-shadowsocks2 /usr/bin/shadowsocks
 
-ENTRYPOINT ["shadowsocks"]
+CMD ["shadowsocks"]
