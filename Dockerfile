@@ -5,7 +5,7 @@ ENV GOPROXY https://goproxy.cn
 
 RUN apk upgrade; \
     apk add git; \
-    git clone github.com/darren2046/go-shadowsocks2; \
+    git clone https://github.com/darren2046/go-shadowsocks2; \
     cd go-shadowsocks2; \
     go build . -o /go-shadowsocks2
 
